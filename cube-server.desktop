@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Cube server
+Name[pl]=Serwer Cube
+Comment=Cube server console
+Comment[pl]=Konsola gry Cube
+Exec=cube_server
+Icon=cube-server.png
+Terminal=true
+Type=Application
+Categories=Application;Game;Game;X-FPPGame;
+# vi: encoding=utf-8
