@@ -6,14 +6,15 @@
 Summary:	Cube FPS game
 Summary(pl):	Gra FPS Cube
 Name:		cube
-Version:	2003_12_23
-Release:	1
+Version:	2004_05_22
+Release:	0.1
 License:	ZLIB
 Group:		X11/Applications/Games
-Source0:	http://dl.sourceforge.net/cube/%{name}_%{version}.zip
-# Source0-md5:	22555b87ef16c403198a6f378c048c6f
+Source0:	http://dl.sourceforge.net/cube/%{name}_%{version}.tar.gz
+# Source0-md5:	a0ae899d9af6ab65970d81bf3ccd94ee
 Source1:	%{name}-wrapper.sh
 Patch0:		%{name}-cheaters.patch
+Patch1:		%{name}-fun.patch
 URL:		http://www.cubeengine.com/
 BuildRequires:	OpenGL-devel-base
 BuildRequires:	SDL_image-devel
@@ -52,11 +53,13 @@ gracza. Ten pakiet zawiera serwer.
 %setup -q -n %{name}
 chmod +w packages/{socksky,stecki}
 cd source
-unzip %{name}_%{version}_src.zip
+unzip -o %{name}_%{version}_src.zip
 %{?with_cheaters:%patch0 -p0}
+%patch1 -p0
+
 
 %build
-cd source/%{name}_%{version}_src/enet
+cd source/enet
 rm -f configure missing
 %{__aclocal}
 %{__autoconf}
@@ -65,7 +68,7 @@ rm -f configure missing
 cd ../src
 %{__make} \
 	COPTFLAGS="%{rpmcflags}" \
-	CXXOPTFLAGS="%{rpmcflags} -fsigned-char -L/usr/X11R6/lib"
+	CXXOPTFLAGS="%{rpmcflags} -fsigned-char -L/usr/X11R6/lib -DHAS_SOCKLEN_T=1"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -73,7 +76,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/%{name}}
 
 cp -fr {data,packages} $RPM_BUILD_ROOT%{_datadir}/%{name}
 install *.cfg $RPM_BUILD_ROOT%{_datadir}/%{name}
-install source/%{name}_%{version}_src/src/cube_* $RPM_BUILD_ROOT%{_bindir}
+install source/src/cube_* $RPM_BUILD_ROOT%{_bindir}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_bindir}/cube
 
 %clean
@@ -81,7 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc docs/* readme.html source/readme.txt source/%{name}_%{version}_src/src/CUBE_TODO.txt
+%doc docs/* readme.html source/readme.txt source/src/CUBE_TODO.txt
 %attr(755,root,root) %{_bindir}/*
 %exclude %{_bindir}/cube_server
 %{_datadir}/%{name}
