@@ -7,12 +7,14 @@ Summary:	Cube FPS game
 Summary(pl):	Gra FPS Cube
 Name:		cube
 Version:	2004_05_22
-Release:	0.1
+Release:	0.6
 License:	ZLIB
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/cube/%{name}_%{version}.tar.gz
 # Source0-md5:	a0ae899d9af6ab65970d81bf3ccd94ee
 Source1:	%{name}-wrapper.sh
+Source2:	%{name}-client.desktop
+Source3:	%{name}-server.desktop
 Patch0:		%{name}-cheaters.patch
 Patch1:		%{name}-fun.patch
 URL:		http://www.cubeengine.com/
@@ -72,12 +74,15 @@ cd ../src
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/%{name}}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_datadir}/%{name},%{_desktopdir}}
 
 cp -fr {data,packages} $RPM_BUILD_ROOT%{_datadir}/%{name}
 install *.cfg $RPM_BUILD_ROOT%{_datadir}/%{name}
 install source/src/cube_* $RPM_BUILD_ROOT%{_bindir}
 install %{SOURCE1} $RPM_BUILD_ROOT%{_bindir}/cube
+install %{SOURCE2} %{SOURCE3} $RPM_BUILD_ROOT%{_desktopdir}
+install -D $RPM_BUILD_ROOT%{_datadir}/%{name}/data/martin/ball2.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}-client.png
+install -D $RPM_BUILD_ROOT%{_datadir}/%{name}/data/martin/ball2.png $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}-server.png
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -88,7 +93,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %exclude %{_bindir}/cube_server
 %{_datadir}/%{name}
+%{_desktopdir}/%{name}-client.desktop
+%{_pixmapsdir}/%{name}-client.png
 
 %files server
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/cube_server
+%{_desktopdir}/%{name}-server.desktop
+%{_pixmapsdir}/%{name}-server.png
