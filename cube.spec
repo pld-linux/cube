@@ -6,7 +6,7 @@ Summary:	Cube FPS game
 Summary(pl):	Gra FPS Cube
 Name:		cube
 Version:	2004_05_22
-Release:	0.6
+Release:	0.7
 License:	ZLIB
 Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/cube/%{name}_%{version}.tar.gz
