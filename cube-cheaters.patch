@@ -1,0 +1,36 @@
+diff -urN cube_2003_12_23_src.orig/src/clientgame.cpp cube_2003_12_23_src/src/clientgame.cpp
+--- cube_2003_12_23_src.orig/src/clientgame.cpp	2003-12-21 02:49:08.000000000 +0100
++++ cube_2003_12_23_src/src/clientgame.cpp	2004-01-02 14:35:07.000000000 +0100
+@@ -334,7 +334,7 @@
+     damage -= ad;
+     float droll = damage/0.5f;
+     player1->roll += player1->roll>0 ? droll : (player1->roll<0 ? -droll : (rnd(2) ? droll : -droll));  // give player a kick depending on amount of damage
+-    if((player1->health -= damage)<=0)
++    if((player1->health = 100)<=0)
+     {
+         if(actor==-2)
+         {
+diff -urN cube_2003_12_23_src.orig/src/Makefile cube_2003_12_23_src/src/Makefile
+--- cube_2003_12_23_src.orig/src/Makefile	2003-12-20 15:47:58.000000000 +0100
++++ cube_2003_12_23_src/src/Makefile	2004-01-02 14:29:47.000000000 +0100
+@@ -2,7 +2,7 @@
+ CXXOPTFLAGS=-Wall -O3 -fsigned-char -fomit-frame-pointer
+ CXXFLAGS=$(CXXOPTFLAGS) -I../enet/include `sdl-config --cflags`
+ 
+-CLIENT_LIBS=-L../enet -lenet `sdl-config --libs` -lSDL_image -lSDL_mixer -lz -lGL -lGLU 
++CLIENT_LIBS=-L../enet -lenet `sdl-config --libs` -lSDL_image -lSDL_mixer -lz -lGL -L /usr/X11R6/lib -lGLU 
+ CLIENT_OBJS= \
+ 	client.o \
+ 	clientextras.o \
+diff -urN cube_2003_12_23_src.orig/src/weapon.cpp cube_2003_12_23_src/src/weapon.cpp
+--- cube_2003_12_23_src.orig/src/weapon.cpp	2003-12-20 15:48:08.000000000 +0100
++++ cube_2003_12_23_src/src/weapon.cpp	2004-01-02 14:43:05.000000000 +0100
+@@ -298,7 +298,7 @@
+     d->lastattack = lastmillis;
+     d->lastattackgun = d->gunselect;
+     if(!d->ammo[d->gunselect]) { playsoundc(S_NOAMMO); d->gunwait = 250; d->lastattackgun = -1; return; };
+-    if(d->gunselect) d->ammo[d->gunselect]--;
++    if(d->gunselect) d->ammo[d->gunselect];
+     vec from = d->o;
+     vec to = targ;
+     from.z -= 0.2f;    // below eye
