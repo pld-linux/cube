@@ -7,5 +7,5 @@ Exec=cube
 Icon=cube-client.png
 Terminal=false
 Type=Application
-Categories=Application;Game;X-FPPGame;
+Categories=Game;X-FPPGame;
 # vi: encoding=utf-8
