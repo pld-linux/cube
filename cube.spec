@@ -1,6 +1,4 @@
 
-# TODO: desktop file
-
 %bcond_with	cheaters	# unlimited energy and ammo
 
 Summary:	Cube FPS game
