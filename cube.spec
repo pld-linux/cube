@@ -9,7 +9,7 @@ Name:		cube
 Version:	2003_12_23
 Release:	1
 License:	ZLIB
-Group:		Applications/Games
+Group:		X11/Applications/Games
 Source0:	http://dl.sourceforge.net/cube/%{name}_%{version}.zip
 # Source0-md5:	22555b87ef16c403198a6f378c048c6f
 Source1:	%{name}-wrapper.sh
@@ -38,7 +38,7 @@ gracza. Ten pakiet zawiera klienta.
 %package server
 Summary:	Cube FPS game server
 Summary(pl):	Serwer gry FPS Cube
-Group:		Applications/Games
+Group:		X11/Applications/Games
 
 %description server
 Cube is an open source multiplayer and singleplayer first person
