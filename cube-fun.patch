@@ -1,0 +1,13 @@
+--- src/clientgame.cpp~	2004-05-09 01:55:34.000000000 +0000
++++ src/clientgame.cpp	2004-07-04 21:10:12.136114672 +0000
+@@ -200,8 +200,8 @@
+ 
+ int sleepwait = 0;
+ string sleepcmd;
+-void sleep(char *msec, char *cmd) { sleepwait = atoi(msec)+lastmillis; strcpy_s(sleepcmd, cmd); };
+-COMMAND(sleep, ARG_2STR);
++void _sleep(char *msec, char *cmd) { sleepwait = atoi(msec)+lastmillis; strcpy_s(sleepcmd, cmd); };
++COMMAND(_sleep, ARG_2STR);
+ 
+ void updateworld(int millis)        // main game update loop
+ {
