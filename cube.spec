@@ -1,6 +1,7 @@
-
+#
+# Conditional build:
 %bcond_with	cheaters	# unlimited energy and ammo
-
+#
 Summary:	Cube FPS game
 Summary(pl):	Gra FPS Cube
 Name:		cube
@@ -68,7 +69,7 @@ rm -f configure missing
 cd ../src
 %{__make} \
 	COPTFLAGS="%{rpmcflags}" \
-	CXXOPTFLAGS="%{rpmcflags} -fsigned-char -L/usr/X11R6/lib -DHAS_SOCKLEN_T=1"
+	CXXOPTFLAGS="%{rpmcflags} -fsigned-char -L/usr/X11R6/%{_lib} -DHAS_SOCKLEN_T=1"
 
 %install
 rm -rf $RPM_BUILD_ROOT
