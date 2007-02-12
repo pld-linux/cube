@@ -5,7 +5,7 @@
 %bcond_with	cheaters	# unlimited energy and ammo
 #
 Summary:	Cube FPS game
-Summary(pl):	Gra FPS Cube
+Summary(pl.UTF-8):   Gra FPS Cube
 Name:		cube
 Version:	2005_08_29
 Release:	0.1
@@ -36,21 +36,21 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Cube is an open source multiplayer and singleplayer first person
 shooter game. This package contains client application.
 
-%description -l pl
-Cube jest open source'ow± gr± FPS zarówno dla wielu jak i jednego
+%description -l pl.UTF-8
+Cube jest open source'owÄ… grÄ… FPS zarÃ³wno dla wielu jak i jednego
 gracza. Ten pakiet zawiera klienta.
 
 %package server
 Summary:	Cube FPS game server
-Summary(pl):	Serwer gry FPS Cube
+Summary(pl.UTF-8):   Serwer gry FPS Cube
 Group:		X11/Applications/Games
 
 %description server
 Cube is an open source multiplayer and singleplayer first person
 shooter game. This package contains server application.
 
-%description server -l pl
-Cube jest open source'ow± gr± FPS zarówno dla wielu jak i jednego
+%description server -l pl.UTF-8
+Cube jest open source'owÄ… grÄ… FPS zarÃ³wno dla wielu jak i jednego
 gracza. Ten pakiet zawiera serwer.
 
 %prep
