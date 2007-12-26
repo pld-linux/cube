@@ -1,10 +1,9 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=Cube
 Comment=FPS Shooter
 Comment[pl]=Strzelanka
 Exec=cube
-Icon=cube-client.png
+Icon=cube-client
 Terminal=false
 Type=Application
 Categories=Game;X-FPPGame;
